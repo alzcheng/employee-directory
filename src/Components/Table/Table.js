@@ -5,7 +5,7 @@ const Table = (props) => {
   console.log(dataArray);
 
   return (
-    <table className="table table-striped">
+    <table className="table table-striped table-bordered border-primary">
       <thead>
         <tr>
           <th scope="col">Title</th>

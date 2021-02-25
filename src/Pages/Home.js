@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Table from '../Components/Table/Table';
 import axios from 'axios';
+import Button from '../Components/Button/Button';
 
 const Home = () => {
   const URL = "https://randomuser.me/api/?results=50"
@@ -72,20 +73,19 @@ const Home = () => {
   return (
     <div>
       <h1>Hello from home</h1>
-      <button onClick={sortUp}>Sort First Name Ascending</button>
-      <button onClick={sortDown}>Sort First Name Descending</button>
+      <Button clickFunction={sortUp} name="Sort First Name Ascending" />
+      <Button clickFunction={sortDown} name="Sort First Name Descending" />
       <form>
-        <input id="filteredAge" type="text" name="filterAge" />;
-       <button onClick={(e) => {
+        <input id="filteredAge" type="text" name="filterAge" placeholder="Enter an Age Number" />
+        <Button clickFunction={(e) => {
           e.preventDefault();
-          filterAge(document.getElementById("filteredAge").value)
-        }
-        }>Filter</button>
-        <button onClick={(e) => {
+          const age = document.getElementById("filteredAge").value;
+          filterAge(age);
+        }} name="Age Filter" />
+        <Button clickFunction={(e) => {
           e.preventDefault();
           stateReset()
-        }
-        }>Unfilter</button>
+        }} name="Age Unfilter" />
       </form>
       {tableData.arrayData && <Table entries={tableData.arrayData} />}
     </div>
