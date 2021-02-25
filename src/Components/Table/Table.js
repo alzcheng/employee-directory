@@ -15,6 +15,7 @@ const Table = (props) => {
           <th scope="col">Country</th>
           <th scope="col">E-mail</th>
           <th scope="col">Phone</th>
+          <th scope="col">Age</th>
         </tr>
       </thead>
       <tbody>
@@ -27,6 +28,7 @@ const Table = (props) => {
             <td>{data.location.country}</td>
             <td>{data.email}</td>
             <td>{data.phone}</td>
+            <td>{data.dob.age}</td>
           </tr>
         ))}
       </tbody>

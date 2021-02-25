@@ -3,15 +3,18 @@ import Table from '../Components/Table/Table';
 import axios from 'axios';
 
 const Home = () => {
-  const URL = "https://randomuser.me/api/?results=5"
-  const [tableData, setTableData] = useState({ arrayData: null });
+  const URL = "https://randomuser.me/api/?results=50"
+  const [tableData, setTableData] = useState({
+    arrayData: null,
+    originalData: null,
+  });
 
 
   useEffect(() => {
     axios.get(URL)
       .then(data => {
         console.log(data.data.results);
-        setTableData({ arrayData: data.data.results });
+        setTableData({ arrayData: data.data.results, originalData: data.data.results });
         console.log(tableData.arrayData);
       })
     return () => {
@@ -33,7 +36,7 @@ const Home = () => {
       return 0;
     });
     console.log(sortedData[1])
-    setTableData({ arrayData: sortedData });
+    setTableData({ ...tableData, arrayData: sortedData });
   }
 
   const sortDown = () => {
@@ -49,7 +52,21 @@ const Home = () => {
       return 0;
     });
     console.log(sortedData[1])
-    setTableData({ arrayData: sortedData });
+    setTableData({ ...tableData, arrayData: sortedData });
+  }
+
+  const stateReset = () => {
+    const originalData = tableData.originalData;
+    console.log(originalData);
+    setTableData({ ...tableData, arrayData: originalData })
+  }
+  const filterAge = (age) => {
+    stateReset();
+    console.log(age)
+    const sortedData = tableData.arrayData.filter(data => parseInt(data.dob.age) == age);
+    console.log(sortedData);
+    console.log(tableData.originalData)
+    setTableData({ ...tableData, arrayData: sortedData })
   }
 
   return (
@@ -57,6 +74,19 @@ const Home = () => {
       <h1>Hello from home</h1>
       <button onClick={sortUp}>Sort First Name Ascending</button>
       <button onClick={sortDown}>Sort First Name Descending</button>
+      <form>
+        <input id="filteredAge" type="text" name="filterAge" />;
+       <button onClick={(e) => {
+          e.preventDefault();
+          filterAge(document.getElementById("filteredAge").value)
+        }
+        }>Filter</button>
+        <button onClick={(e) => {
+          e.preventDefault();
+          stateReset()
+        }
+        }>Unfilter</button>
+      </form>
       {tableData.arrayData && <Table entries={tableData.arrayData} />}
     </div>
   )
