@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Table = (props) => {
-  const dataArray = props.entries.data.results;
+  const dataArray = props.entries;
   console.log(dataArray);
 
   return (
