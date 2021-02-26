@@ -7,14 +7,18 @@
   * [Test Instructions](##Test-Instructions)
   * [Questions](##Questions)
   
+
+## Screenshot
+![App Screenshot](./src/Images/employee_directory_screenshot.png)
+
   ## Description
   This app generates a table with 50 random entries of employee information.  The user can then sort the first name by ascending and descending order.  The user can also enter in an age number and filter the table with that number. 
 
   ## Installation Instructions
-  This project is deployed on Heroku. Click the link here. 
+  This project is deployed on Heroku. Click this [link](https://employee-directory-515.herokuapp.com/). 
 
   ## Usage Information
-  To use the project, click the link here. 
+  To use the project, click this [link](https://employee-directory-515.herokuapp.com/). 
 
   ## Contribution Guidelines
   This project adheres to [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-2.0-4baaaa.svg)](code_of_conduct.md) for any contributions.
