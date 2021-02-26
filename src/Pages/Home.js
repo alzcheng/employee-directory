@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Table from '../Components/Table/Table';
 import axios from 'axios';
 import Button from '../Components/Button/Button';
+import "./Home.css";
 
 const Home = () => {
   const URL = "https://randomuser.me/api/?results=50"
@@ -71,8 +72,8 @@ const Home = () => {
   }
 
   return (
-    <div>
-      <h1>Hello from home</h1>
+    <div className="home-page">
+      <h1>Employee Directory</h1>
       <Button clickFunction={sortUp} name="Sort First Name Ascending" />
       <Button clickFunction={sortDown} name="Sort First Name Descending" />
       <form>
